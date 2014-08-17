@@ -33,7 +33,7 @@ coordinates<-read.csv("Country_List_ISO_3166_Codes_Latitude_Longitude.csv") # fi
 coordinates
 dFdonor_plot<-merge(dFdonor, coordinates, by.x=c("iso3c"), by.y=c("Alpha.3.code"))
 mdat <- map_data('world')
-gmap <- ggplot() + geom_polygon(dat=worldmap, aes(long, lat, group=group), colour="lightblue", size=0.1, alpha=0.3, fill=rgb(7,0,30,maxColorValue=255))+theme(panel.background=element_rect(fill=rgb(7,0,30,maxColorValue=255)),panel.grid.major=element_blank(),panel.grid.minor=element_blank(),plot.background=element_rect(fill=rgb(7,0,30,maxColorValue=255)),axis.text=element_blank(),axis.ticks=element_blank())
+gmap <- ggplot() + geom_polygon(dat=mdat, aes(long, lat, group=group), colour="lightblue", size=0.1, alpha=0.3, fill=rgb(7,0,30,maxColorValue=255))+theme(panel.background=element_rect(fill=rgb(7,0,30,maxColorValue=255)),panel.grid.major=element_blank(),panel.grid.minor=element_blank(),plot.background=element_rect(fill=rgb(7,0,30,maxColorValue=255)),axis.text=element_blank(),axis.ticks=element_blank())
 gmap
 
 gmap_nolabel <-gmap + geom_point(data=dFdonor_plot, aes(Longitude..average., Latitude..average., size=indicator, fill=indicator, alpha=0.05), shape=21, colour=NA) + scale_size_area(max_size=15,guide=FALSE)+guides(alpha=FALSE)+theme(legend.position="none")
